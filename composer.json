@@ -1,0 +1,34 @@
+{
+    "name": "porygon/organization",
+    "description": "组织架构模块",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Porygon\\Organization\\": "src/",
+            "Database\\Seeders\\Organization": "porygon/organization/database/seeders/",
+            "Database\\Factories\\Organization": "porygon/organization/database/factories/"
+        }
+    },
+    "authors": [
+        {
+            "name": "cyw",
+            "email": "1764887758@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "porygon/base": "*",
+        "porygon/user": "*"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Porygon\\Organization\\ServiceProvider"
+            ],
+            "aliases": {
+                "JOrganization": "Porygon\\Organization\\Facade"
+            }
+        }
+    }
+}
