@@ -3,20 +3,16 @@
 namespace Porygon\Organization\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Porygon\Base\Models\Model;
 use Porygon\User\Traits\BelongsToUser;
 
 class InCharge extends Model
 {
     use HasFactory, BelongsToUser;
 
-    protected $guarded = [];
-    protected $table   = "in_charge";
     protected $with    = ["user", "department", "post"];
-    public function config($key)
-    {
-        return  config("jorganization.database.$key");
-    }
+    protected $config = "p-organization";
+
     public function getTable()
     {
         return $this->config("prefix") . $this->config("tables.in_charge");

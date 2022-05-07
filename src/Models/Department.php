@@ -2,23 +2,17 @@
 
 namespace Porygon\Organization\Models;
 
-use Dcat\Admin\Traits\HasDateTimeFormatter;
 use Dcat\Admin\Traits\ModelTree;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Porygon\Base\Models\Model;
 use Porygon\User\Models\User;
 use Spatie\EloquentSortable\Sortable;
 
 class Department extends Model implements Sortable
 {
-    use HasFactory, HasDateTimeFormatter, ModelTree;
-    protected $guarded = [];
+    use  ModelTree;
     protected $with    = ["parent"];
+    protected $config = "p-organization";
 
-    public function config($key)
-    {
-        return  config("jorganization.database.$key");
-    }
     public function getTable()
     {
         return $this->config("prefix") . $this->config("tables.departments");

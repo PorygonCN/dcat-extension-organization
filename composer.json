@@ -5,9 +5,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Porygon\\Organization\\": "src/",
-            "Database\\Seeders\\Organization": "porygon/organization/database/seeders/",
-            "Database\\Factories\\Organization": "porygon/organization/database/factories/"
+            "Porygon\\Organization\\": "src/"
         }
     },
     "authors": [
@@ -22,13 +20,11 @@
         "porygon/user": "*"
     },
     "extra": {
+        "dcat-admin": "Porygon\\Organization\\ServiceProvider",
         "laravel": {
             "providers": [
                 "Porygon\\Organization\\ServiceProvider"
-            ],
-            "aliases": {
-                "JOrganization": "Porygon\\Organization\\Facade"
-            }
+            ]
         }
     }
 }

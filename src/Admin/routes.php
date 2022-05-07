@@ -1,21 +1,15 @@
 <?php
 
-use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
-use Dcat\Admin\Admin;
-use Porygon\User\Admin\Controller\UserController;
+use Porygon\Organization\Admin\Controllers\DepartmentController;
+use Porygon\Organization\Admin\Controllers\PostController;
 
-Route::group([
-    'prefix'     => config('admin.route.prefix'),
-    'middleware' => config('admin.route.middleware'),
-], function (Router $router) {
-    $router->group(["prefix" => "user", "as" => "user_center."], function (Router $router) {
-        $router->resources([
-            "users" => UserController::class,          // 用户管理
-        ]);
-        // 获取用户导入模板
-        $router->get("users/import/template", 'UserController@getImportTemplate')->name("users.import.template");
-        // 获取新工号
-        $router->get("getleastno", 'UserController@getLeastNo')->name("getleastno");
-    });
+/**
+ * 组织架构
+ */
+Route::group(["prefix" => "organization", "as" => "organization."], function () {
+    Route::resources([
+        "departments" => DepartmentController::class,    // 部门管理
+        "posts"       => PostController::class,          // 职务管理
+    ]);
 });

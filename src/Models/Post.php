@@ -5,17 +5,15 @@ namespace Porygon\Organization\Models;
 use Dcat\Admin\Traits\HasDateTimeFormatter;
 use Dcat\Admin\Traits\ModelTree;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Porygon\Base\Models\Model;
+use Porygon\Base\Models\User;
 
 class Post extends Model
 {
     use HasFactory, HasDateTimeFormatter, ModelTree;
 
-    protected $guarded = [];
-    public function config($key)
-    {
-        return  config("jorganization.database.$key");
-    }
+    protected $config = "p-organization";
+
     public function getTable()
     {
         return $this->config("prefix") . $this->config("tables.posts");

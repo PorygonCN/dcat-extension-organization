@@ -28,7 +28,7 @@ class PostController extends AdminController
 
                 $row->column(5, function (Column $column) {
                     $form = new WidgetsForm();
-                    $form->action(admin_url('posts'));
+                    $form->action(admin_route('organization.posts.store'));
 
                     $form->row(function (Form\Row $row) {
                         $row->select('parent_id')->options(ModelsPost::selectOptions())->saving(function ($val) {
@@ -122,7 +122,7 @@ class PostController extends AdminController
                 $row->width(6)->text('title');
                 $row->width(6)->switch('enable')->default(true);
 
-                $row->select('parent_id')->options(Post::selectOptions())->saving(function ($val) {
+                $row->select('parent_id')->options(ModelsPost::selectOptions())->saving(function ($val) {
                     return $val ?? 0;
                 });
             });
