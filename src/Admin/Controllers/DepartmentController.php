@@ -12,6 +12,7 @@ use Dcat\Admin\Layout\Row;
 use Dcat\Admin\Tree;
 use Dcat\Admin\Widgets\Box;
 use Dcat\Admin\Widgets\Form as WidgetsForm;
+use Dcat\Admin\Widgets\Modal;
 use Porygon\Organization\Admin\Repositories\Department;
 use Porygon\Organization\Models\Department as ModelsDepartment;
 use Porygon\Organization\Models\Post;
@@ -20,6 +21,7 @@ use Porygon\User\Models\User;
 
 class DepartmentController extends AdminController
 {
+    protected $translation = "p-organization::department";
 
     public function index(Content $content)
     {
@@ -146,7 +148,8 @@ class DepartmentController extends AdminController
             if ($form->isEditing()) {
                 $form->row(function (Form\Row $row) {
                     $row->hasMany("in_charge_persons", "负责人", function (Form\NestedForm $form) {
-                        $form->selectTable("user_id", "负责人")->required()
+                        $form->selectTable("user_id", "负责人")
+                            ->required()
                             ->title('请选择负责人')
                             ->dialogWidth('70%') // 弹窗宽度，默认 800px
                             ->from(UserTable::make(['id' => $form->getKey()])) // 设置渲染类实例，并传递自定义参数

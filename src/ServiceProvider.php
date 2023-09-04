@@ -60,15 +60,20 @@ class ServiceProvider extends ExtendServiceProvider
      */
     public function init()
     {
-        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
-        $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
-        $this->registerRoutes(__DIR__ . '/Admin/routes.php');
-
         parent::init();
         require __DIR__ . "/Admin/bootstrap.php";
+
+        $this->loadRoutes();
+
         $this->publishes([__DIR__ . '/../config/config.php' => config_path('p-organization.php'),], "p-organization-config");
-        // $this->publishes([
-        //     __DIR__ . "/../database/migrations" => database_path("migrations")
-        // ], "p-organization-migration");
+
+        $this->loadTranslationsFrom(__DIR__ . "/../resources/lang", "p-organization");
+        $this->publishes([__DIR__ . "/../resources/lang" => app()->langPath()], "porygon-organization-lang");
+    }
+    public function loadRoutes()
+    {
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+        $this->registerRoutes(__DIR__ . "/Admin/routes.php");
     }
 }

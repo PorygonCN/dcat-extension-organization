@@ -17,6 +17,7 @@ use Porygon\Organization\Models\Post as ModelsPost;
 
 class PostController extends AdminController
 {
+    protected $translation = "p-organization::post";
 
     public function index(Content $content)
     {
