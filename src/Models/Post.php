@@ -6,7 +6,7 @@ use Dcat\Admin\Traits\HasDateTimeFormatter;
 use Dcat\Admin\Traits\ModelTree;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Porygon\Base\Models\Model;
-use Porygon\Base\Models\User;
+use App\Models\User;
 
 class Post extends Model
 {

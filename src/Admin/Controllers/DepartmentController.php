@@ -17,7 +17,7 @@ use Porygon\Organization\Admin\Repositories\Department;
 use Porygon\Organization\Models\Department as ModelsDepartment;
 use Porygon\Organization\Models\Post;
 use Porygon\User\Admin\Renderable\UserTable;
-use Porygon\User\Models\User;
+use App\Models\User;
 
 class DepartmentController extends AdminController
 {

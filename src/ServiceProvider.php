@@ -5,7 +5,7 @@ namespace Porygon\Organization;
 use Dcat\Admin\Extend\ServiceProvider as ExtendServiceProvider;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Porygon\Base\Models\User;
+use App\Models\User;
 use Porygon\Organization\Models\Department;
 use Porygon\Organization\Models\InCharge;
 
