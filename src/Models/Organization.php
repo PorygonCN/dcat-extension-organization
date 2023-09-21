@@ -10,4 +10,10 @@ use Spatie\EloquentSortable\Sortable;
 
 class Organization extends Model
 {
+    protected $config = "p-organization";
+
+    public function getTable()
+    {
+        return $this->config("prefix") . $this->config("tables.organizations");
+    }
 }
